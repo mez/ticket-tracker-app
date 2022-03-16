@@ -8,8 +8,6 @@ dotevn.config()
 
 const PORT = process.env.PORT || 8000
 
-
-
 // connect to DB
 connectDB()
 
