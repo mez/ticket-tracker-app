@@ -1,0 +1,22 @@
+{
+  "name": "ticket-tracker",
+  "version": "1.0.0",
+  "description": "support desk react app and backend",
+  "main": "server.js",
+  "repository": "git@github.com:mez/ticket-tracker-app.git",
+  "license": "MIT",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
