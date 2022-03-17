@@ -8,7 +8,9 @@
   "license": "MIT",
   "scripts": {
     "start": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "server": "nodemon backend/server.js",
+    "client": "yarn --cwd frontend start",
+    "dev": "concurrently \"yarn server \" \"yarn client\"  "
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -20,6 +22,7 @@
     "mongoose": "^6.2.6"
   },
   "devDependencies": {
+    "concurrently": "^7.0.0",
     "nodemon": "^2.0.15"
   }
 }

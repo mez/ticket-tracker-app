@@ -2,6 +2,7 @@ import express from "express";
 import dotevn from 'dotenv'
 import colors from 'colors'
 import userRouter from './routes/userRoutes.js'
+import ticketRouter from './routes/ticketRoutes.js'
 import {errorHandler} from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 dotevn.config() 
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
  
 
 app.use('/api/users', userRouter)
+app.use('/api/tickets', ticketRouter)
 
 app.use(errorHandler)
 

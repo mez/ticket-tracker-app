@@ -11,7 +11,7 @@ const generateToken = (id) => {
 }
 
 // @description Get current logged in user
-// @route       /api/users/mez
+// @route       /api/users/me
 // @access      Protected
 export const getMe = asyncHandler(async (req, res) => {
 
