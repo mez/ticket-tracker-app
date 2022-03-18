@@ -5,6 +5,10 @@ const router = express.Router()
 
 import protect from '../middleware/authMiddleware.js'
 
+// re-route into note router for ticket specific notes
+import noteRouter from './noteRoutes.js'
+router.use('/:ticketId/notes', noteRouter)
+
 router.route('/')
   .get(protect, getTickets)
   .post(protect, createTicket)
