@@ -4,7 +4,10 @@ import authService from "./authService"
 
 // get user from localStorage
 const user = JSON.parse(localStorage.getItem('user'))
-
+if (user) {
+  user.id = user._id
+  delete user._id
+}
 // initial state
 const initialState = {
   user: user ?? null,
