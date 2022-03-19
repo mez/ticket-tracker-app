@@ -8,6 +8,10 @@ import {errorHandler} from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 dotevn.config() 
 
+import {fileURLToPath} from 'url';
+const __filename = fileURLToPath(import.meta.url);
+
+
 const PORT = process.env.PORT || 8000
 
 // connect to DB
@@ -26,6 +30,8 @@ app.use('/api/tickets', ticketRouter)
 //serve frontend if in prod
 if (process.env.NODE_ENV === 'production') {
   // set build folder as static
+  const __dirname = path.dirname(__filename);
+
   app.use(express.static(path.join(__dirname, '../frontend/build')))
   app.get('*', (req, res) => {
     res.sendFile( path.join(__dirname, '../', 'frontend', 'build', 'index.html' ))
