@@ -30,11 +30,11 @@ app.use('/api/tickets', ticketRouter)
 //serve frontend if in prod
 if (process.env.NODE_ENV === 'production') {
   // set build folder as static
-  const __dirname = path.dirname(__filename);
+  const current_dir = path.dirname(__filename);
 
-  app.use(express.static(path.join(__dirname, '../frontend/build')))
+  app.use( express.static( path.join(current_dir, '../frontend/build') ) )
   app.get('*', (req, res) => {
-    res.sendFile( path.join(__dirname, '../', 'frontend', 'build', 'index.html' ))
+    res.sendFile( path.join(current_dir, '../', 'frontend', 'build', 'index.html' ))
   })
 } else {
   app.get('/', (req, res) => {
