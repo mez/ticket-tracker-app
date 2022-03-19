@@ -10,7 +10,8 @@
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "yarn --cwd frontend start",
-    "dev": "concurrently \"yarn server \" \"yarn client\"  "
+    "dev": "concurrently \"yarn server \" \"yarn client\" ",
+    "heroku-postbuild": "YARN_PRODUCTION=false yarn --cwd frontend install && yarn --cwd frontend build"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

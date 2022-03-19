@@ -32,7 +32,13 @@ export const getTicket = asyncHandler(async (req, res) => {
     throw new Error('User not found')
   }
 
-  const ticket = await Ticket.findOne({user: req.user.id, id: req.params.id})
+  // const ticket = await Ticket.findById(req.params.id)
+  const ticket = await Ticket.findOne({_id: req.params.id, user: req.user.id})
+
+  if (ticket.user.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error('User not authorized')
+  }
 
   if (!ticket) {
     res.status(404)
@@ -54,7 +60,7 @@ export const updateTicket = asyncHandler(async (req, res) => {
     throw new Error('User not found')
   }
 
-  const ticket = await Ticket.findOne({user: req.user.id, id: req.params.id})
+  const ticket = await Ticket.findOne({user: req.user.id, _id: req.params.id})
 
   if (!ticket) {
     res.status(404)

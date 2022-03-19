@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotevn from 'dotenv'
 import colors from 'colors'
@@ -18,13 +19,23 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 
-app.get('/', (req, res) => {
-  res.status(201).json({message: 'Welcome to the Support Desk API'})
-})
- 
-
 app.use('/api/users', userRouter)
 app.use('/api/tickets', ticketRouter)
+
+
+//serve frontend if in prod
+if (process.env.NODE_ENV === 'production') {
+  // set build folder as static
+  app.use(express.static(path.join(__dirname, '../frontend/build')))
+  app.get('*', (req, res) => {
+    res.sendFile( path.join(__dirname, '../', 'frontend', 'build', 'index.html' ))
+  })
+} else {
+  app.get('/', (req, res) => {
+    res.status(201).json({message: 'Welcome to the Support Desk API'})
+  })
+}
+
 
 app.use(errorHandler)
 

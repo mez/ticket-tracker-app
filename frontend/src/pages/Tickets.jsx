@@ -41,7 +41,7 @@ export default function Tickets() {
           <div></div>
         </div>
         {tickets.map((ticket) => (
-          <TicketItem key={ticket.id} ticket={ticket} />
+          <TicketItem key={ticket._id} ticket={ticket} />
         ))}
       </div>
     </>

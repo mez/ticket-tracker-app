@@ -40,6 +40,9 @@ const getTicket = async (id, token) => {
 
   const response = await axios.get(`${API_URL}/${id}`, config)
 
+  console.log('got Ticket service: ', response.data._id)
+
+
   return response.data
 }
 
